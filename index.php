@@ -22,7 +22,7 @@ $array = array ('version' => '1.0','response' => array ('outputSpeech' => array 
     array (
       0 => 
       array (
-        'type' => 'Dialog.Delegate',
+        'type' => 'Dialog.DelegateSlot',
         'slotToDelegate' => 'id',
       ),
     ),

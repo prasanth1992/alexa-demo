@@ -16,6 +16,17 @@ $text = "Welcome World This latest";
 $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
 echo json_encode($array);
 }
+else if($EchoReqObj->request->intent->name =="today"){
+  
+$ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/GetCountOfTodaysIncident');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+$text=curl_exec($ch);
+  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false));
+echo json_encode($array);
+curl_close($ch);
+}
+
 else if($EchoReqObj->request->intent->name =="status"){
   $text="Enter the user id";
 $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 

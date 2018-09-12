@@ -17,9 +17,28 @@ $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>
 echo json_encode($array);
 }
 else if($EchoReqObj->request->intent->name =="status"){
-$text = "Please provide the id";
-$array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"directives"=>array("type"=>"Dialog.Delegate","slotToElicit"=>"id"),"shouldEndSession"=>false));
-echo json_encode($array);
+$array = array (
+  'version' => '1.0',
+  'response' => 
+  array (
+    'outputSpeech' => 
+    array (
+      'type' => 'PlainText',
+      'text' => 'Kindly enter User id',
+    ),
+    'directives' => 
+    array (
+      0 => 
+      array (
+        'type' => 'Dialog.ElicitSlot',
+        'slotToElicit' => 'id',
+      ),
+    ),
+    'shouldEndSession' => false,
+  ),
+);
+  echo json_encode($array);
+
   
 }
 

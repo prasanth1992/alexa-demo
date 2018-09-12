@@ -17,6 +17,7 @@ $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>
 echo json_encode($array);
 }
 else if($EchoReqObj->request->intent->name =="status"){
+  $text="Enter the user id";
 $array = array (
   'version' => '1.0',
   'response' => 
@@ -24,7 +25,7 @@ $array = array (
     'outputSpeech' => 
     array (
       'type' => 'PlainText',
-      'text' => 'Kindly enter User id',
+      'text' => $text,
     ),
     'directives' => 
     array (

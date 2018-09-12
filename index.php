@@ -22,8 +22,8 @@ $array = array ('version' => '1.0','response' => array ('outputSpeech' => array 
     array (
       0 => 
       array (
-        'type' => 'Dialog.DelegateSlot',
-        'slotToDelegate' => 'id',
+        'type' => 'Dialog.ElicitSlot',
+        'slotToElicit' => 'id',
       ),
     ),
     'shouldEndSession' => false,

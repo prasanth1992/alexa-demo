@@ -31,13 +31,13 @@ $array = array ('version' => '1.0','response' => array ('outputSpeech' => array 
 );
   echo json_encode($array);
   
-
+if ($EchoReqObj->request->dialogState === "STARTED"){
+ $text = "Started";
+$array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
+echo json_encode($array);
+}
   
 }
-else if($EchoReqObj->request->intent->slot->id->value){
-$array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$value),"shouldEndSession"=>false));
-echo json_encode($array);
 
-}
 
 ?>

@@ -23,7 +23,7 @@ $array = array ('version' => '1.0','response' => array ('outputSpeech' => array 
       0 => 
       array (
         'type' => 'Dialog.Delegate',
-        'slotToElicit' => 'id',
+        'slotToDelegate' => 'id',
       ),
     ),
     'shouldEndSession' => false,

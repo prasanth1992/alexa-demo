@@ -17,9 +17,13 @@ $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>
 echo json_encode($array);
 }
 else if($EchoReqObj->request->intent->name =="status"){
-$text = "Provide ID froom github";
-$array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false,"directives"=>array("type"=>"Dialog.ElicitSlot","slotToElicit"=>"id")));
+$ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/GetCountOfTodaysIncident');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+$text=curl_exec($ch);
+  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
 echo json_encode($array);
+curl_close($ch);
   
 }
 

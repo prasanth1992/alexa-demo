@@ -34,7 +34,7 @@ $array = array ('version' => '1.0','response' => array ('outputSpeech' => array 
 
   
 }
-else if($value=$EchoReqObj->request->intent->slot->id->value){
+else if($EchoReqObj->request->intent->slot->id->value){
 $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$value),"shouldEndSession"=>false));
 echo json_encode($array);
 

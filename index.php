@@ -18,16 +18,7 @@ echo json_encode($array);
 }
 else if($EchoReqObj->request->intent->name =="status"){
   $text="Enter the user id";
-$array = array (
-  'version' => '1.0',
-  'response' => 
-  array (
-    'outputSpeech' => 
-    array (
-      'type' => 'PlainText',
-      'text' => $text,
-    ),
-    'directives' => 
+$array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 
       array (
@@ -39,12 +30,14 @@ $array = array (
   ),
 );
   echo json_encode($array);
-if($value=$EchoReqObj->request->intent->slot->id->value){
+  
+
+  
+}
+else if($value=$EchoReqObj->request->intent->slot->id->value){
 $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$value),"shouldEndSession"=>false));
 echo json_encode($array);
 
-}
-  
 }
 
 ?>

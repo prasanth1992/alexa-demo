@@ -55,7 +55,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
   echo json_encode($array);
 }
  else if($EchoReqObj->request->intent->name == "CreateObject"){
-    $text="Enter the user id";
+    $text="please enter Subject of Incident";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 

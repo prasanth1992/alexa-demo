@@ -67,7 +67,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     'shouldEndSession' => false,
     ),
     );
- if ($var=$EchoReqObj->request->intent->slots->id->value){
+ if ($var=$EchoReqObj->request->intent->slots->subject->value){
    
     $ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/CreateIncident/'.$var);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, CURLOPT_HTTPHEADER, array(

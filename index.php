@@ -69,7 +69,10 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     );
  if ($var=$EchoReqObj->request->intent->slots->subject->value){
    
-    $ch = 'http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/CreateIncident/'.$var;
+$data = array("subject" => $var);                                                                    
+$ch = json_encode($data);                                                                                   
+                                                                                                                     
+
     
  
   

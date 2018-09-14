@@ -46,6 +46,11 @@ $array = array ('version' => '1.0','response' => array ('outputSpeech' => array 
 $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
 echo json_encode($array);
 }
+  else{
+ $text = "error";
+$array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
+echo json_encode($array);
+}
 }
 
 

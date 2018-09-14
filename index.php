@@ -54,7 +54,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 }
   echo json_encode($array);
 }
- else if($EchoReqObj->request->intent->name == "status"){
+ else if($EchoReqObj->request->intent->name == "CreateObject"){
     $text="Enter the user id";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
@@ -69,9 +69,9 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     );
  if ($var=$EchoReqObj->request->intent->slots->id->value){
    
-    $ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/GetStatusOfIncident/'.$var);
+    $ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/CreateIncident/'.$var);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, CURLOPT_HTTPHEADER, array(
-    Content-Type:application/json,
+    'Content-Type:application/json'
 ),1);
  
   

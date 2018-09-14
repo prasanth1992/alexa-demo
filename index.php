@@ -79,7 +79,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
     'Content-Type: application/json'                                                                              
                                                                           
-);                                                                                                                   
+));                                                                                                                   
                                                                                                                      
     $result = curl_exec($ch);
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$result),"shouldEndSession"=>false));

@@ -61,7 +61,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
       0 => 
       array (
         'type' => 'Dialog.ElicitSlot',
-        'slotToElicit' => 'id',
+        'slotToElicit' => 'subject',
       ),
     ),
     'shouldEndSession' => false,

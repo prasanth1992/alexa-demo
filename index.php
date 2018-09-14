@@ -69,16 +69,13 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     );
  if ($var=$EchoReqObj->request->intent->slots->subject->value){
    
-    $ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/CreateIncident/'.$var);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, CURLOPT_HTTPHEADER, array(
-    'Content-Type:application/json'
-),1);
+    $ch = 'http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/CreateIncident/'.$var;
+    
  
   
-    $text=curl_exec($ch);
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
+   
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$ch),"shouldEndSession"=>false));
     echo json_encode($array);
-    curl_close($ch);
    
    
 }

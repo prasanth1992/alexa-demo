@@ -41,7 +41,7 @@ $array = array ('version' => '1.0','response' => array ('outputSpeech' => array 
   ),
 );
   echo json_encode($array);
- if ($EchoReqObj->request->dialogState === "STARTED"){
+ if ($EchoReqObj->request->intent->slots->id->value === "123"){
  $text = "respose";
 $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
 echo json_encode($array);

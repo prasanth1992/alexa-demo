@@ -41,7 +41,16 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     ),
     );
  if ($var=$EchoReqObj->request->intent->slots->id->value){
-$array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Inserted value".$var),"shouldEndSession"=>false));
+   
+    $ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/GetStatusOfIncident/'.$var);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  
+    $text=curl_exec($ch);
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Incident Status". $text),"shouldEndSession"=>false));
+    echo json_encode($array);
+    curl_close($ch);
+   
+   
 }
   echo json_encode($array);
 }

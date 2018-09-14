@@ -27,7 +27,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     curl_close($ch);
  }
 
-  else if($EchoReqObj->request->intent->name =="status"){
+  else if($EchoReqObj->request->intent->name == "status"){
     $text="Enter the user id";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
@@ -42,7 +42,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     );
     echo json_encode($array);
 }
- if ($EchoReqObj->request->intent->name =="status" && $EchoReqObj->request->intent->slots->id->value == "123"){
+ else if ($EchoReqObj->request->intent->name =="status" && $EchoReqObj->request->intent->slots->id->value == "123"){
  $text = "respose";
 $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
 echo json_encode($array);

@@ -67,30 +67,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     'shouldEndSession' => false,
     ),
     );
- if ($var=$EchoReqObj->request->intent->slots->subject->value){
-   
-$data = array("subject" => $var);                                                                    
-$data_string = json_encode($data);                                                                                   
-                                                                                                                     
-$ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/CreateIncident');                                                                      
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-    'Content-Type: application/json'                                                                              
-                                                                          
-);                                                                                                                   
-                                                                                                                     
-$result = curl_exec($ch);
-    
- 
-  
-   
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$result),"shouldEndSession"=>false));
-    echo json_encode($array);
-   curl_close($ch);
-   
-}
+
   echo json_encode($array);
 }
 

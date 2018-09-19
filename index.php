@@ -89,6 +89,12 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 }
   echo json_encode($array);
 }
+else {
+  
+    $text="Sorry I didn't get that";
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
+    echo json_encode($array);
+ }
 
 
 

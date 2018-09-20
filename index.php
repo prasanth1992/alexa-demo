@@ -28,7 +28,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
  }
 
   else if($EchoReqObj->request->intent->name == "status"){
-    $text="Enter the user id";
+    $text="Enter the incident id";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 

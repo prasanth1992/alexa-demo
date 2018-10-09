@@ -22,7 +22,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
     $text=curl_exec($ch);
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"sessionAttributes"=>array("lastResponse"=>array("speech"=>$text,"reprompt"=>$text))));
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),,"sessionAttributes"=>array("lastResponse"=>array("speech"=>$text,"reprompt"=>$text)));
     echo json_encode($array);
     curl_close($ch);
  }

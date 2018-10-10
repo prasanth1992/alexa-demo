@@ -46,7 +46,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
     $text=curl_exec($ch);
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false));
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
     curl_close($ch);
    
@@ -83,7 +83,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     $result = curl_exec($ch);
     curl_close($ch);                                                                                                                     
 
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$result),"shouldEndSession"=>false));
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$result),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
   
 }

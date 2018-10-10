@@ -96,6 +96,12 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     echo json_encode($array);
  }
 
+else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
+    $text = $EchoReqObj->session->attributes->lastSpeech;
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
+    echo json_encode($array);
+ }
+
 
 
 

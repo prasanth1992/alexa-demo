@@ -83,7 +83,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     $result = curl_exec($ch);
     curl_close($ch);                                                                                                                     
 
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$result),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$result),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
     echo json_encode($array);
   
 }

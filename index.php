@@ -147,7 +147,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
   echo json_encode($array);
 }
  else if($EchoReqObj->request->intent->name == "incidentDescription"){
-    $text="Enter the close incident id";
+    $text="Enter Description incident id";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 

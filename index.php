@@ -2,7 +2,7 @@
 $rawJSON = file_get_contents('php://input');
 $EchoReqObj = json_decode($rawJSON);
 if($EchoReqObj->request->type=="LaunchRequest"){
-  $text = "Nanu Adagara Baboo";
+  $text = "Nannu Adagara Baboo";
   $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
   echo json_encode($array);
  }

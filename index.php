@@ -108,9 +108,17 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
   
     $text=curl_exec($ch);
     
+    if($text){
+      $text="No summary Today";
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+    echo json_encode($array);
+       curl_close($ch);
+    }
+    else{
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
     curl_close($ch);
+    }
   
   }
   else if($EchoReqObj->request->intent->name == "closeincident"){

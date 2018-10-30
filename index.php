@@ -56,10 +56,8 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 }
 // Test of Create object
 
- else if($EchoReqObj->request->intent->name == "CreateObject"){
-	 
-	 else if($EchoReqObj->request->intent->slots->subject->name=="subject"){
-	$text="please enter Subject of Incident";
+  else if($EchoReqObj->request->intent->name == "CreateObject"){
+    $text="please enter Subject of Incident";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 
@@ -71,20 +69,26 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     'shouldEndSession' => false,
     ),
     );
-	 if ($var=$EchoReqObj->request->intent->slots->subject->value){
+ if ($var=$EchoReqObj->request->intent->slots->subject->value){
    
-$subject = array("subject" => $var);                                                                    
-$subject_string = json_encode($data);                                                                                   
-  
+$data = array("subject" => $var);                                                                    
+$data_string = json_encode($data);                                                                                   
+$ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/CreateIncident');                                                                      
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+    'Content-Type: application/json'                                                                              
+                                                                          
+));                                                                                                                   
+                                                                                                                     
+    $result = curl_exec($ch);
+    curl_close($ch);                                                                                                                     
+
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$result),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
+    echo json_encode($array);
   
 }
-	 }
-	
-  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"subject is".$subject."description is".$description),"shouldEndSession"=>false));
-
-	 
-  
-
   echo json_encode($array);
 }
 

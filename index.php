@@ -58,7 +58,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 
  else if($EchoReqObj->request->intent->name == "CreateObject"){
 	 
-	 else if(($EchoReqObj->request->intent->slots=="subject"){
+	 else if($EchoReqObj->request->intent->slots->subject->name=="subject"){
 	$text="please enter Subject of Incident";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
@@ -79,8 +79,8 @@ $subject_string = json_encode($data);
   
 }
 	 }
-	 else if(($EchoReqObj->request->intent->slots=="subject"){
-	$text="please enter Subject of Incident";
+	 else if($EchoReqObj->request->intent->slots->description->name=="description"){
+	$text="please enter Description";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 
@@ -94,7 +94,7 @@ $subject_string = json_encode($data);
     );
 	 if ($var=$EchoReqObj->request->intent->slots->subject->value){
    
-$description = array("subject" => $var);                                                                    
+$description = array("description" => $var);                                                                    
 $description_string = json_encode($data);                                                                                   
   
   

@@ -79,27 +79,7 @@ $subject_string = json_encode($data);
   
 }
 	 }
-	 else if($EchoReqObj->request->intent->slots->description->name=="description"){
-	$text="please enter Description";
-    $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
-    array (
-      0 => 
-      array (
-        'type' => 'Dialog.ElicitSlot',
-        'slotToElicit' => 'description',
-      ),
-    ),
-    'shouldEndSession' => false,
-    ),
-    );
-	 if ($var=$EchoReqObj->request->intent->slots->subject->value){
-   
-$description = array("description" => $var);                                                                    
-$description_string = json_encode($data);                                                                                   
-  
-  
-}
-	 }
+	
   $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"subject is".$subject."description is".$description),"shouldEndSession"=>false));
 
 	 

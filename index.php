@@ -70,13 +70,13 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     'shouldEndSession' => false,
     ),
     );
-   else if ($var=$EchoReqObj->request->intent->slots->subject->value){
+   if ($var=$EchoReqObj->request->intent->slots->subject->value){
    
 	$subject = array("subject" => $var);                                                                    
 	$subject_string = json_encode($subject); 
 
-    $array= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$subject_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
-    echo json_encode($array);                                                                                 
+    $array1= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$subject_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
+    echo json_encode($array1);                                                                                 
 
 }
 	 }

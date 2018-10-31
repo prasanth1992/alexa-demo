@@ -55,7 +55,8 @@ if($EchoReqObj->request->type=="LaunchRequest"){
   echo json_encode($array);
 }
 
-  else if($EchoReqObj->request->intent->name == "CreateObject"){
+  
+else if($EchoReqObj->request->intent->name == "CreateObject"){
 	 
 	if($EchoReqObj->request->intent->slots->subject->name=="subject"){
 	$text="please enter Subject of Incident";
@@ -80,11 +81,37 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 
 }
 	 }
+	 else if($EchoReqObj->request->intent->slots->description->name=="description"){
+		 $text="please enter Subject of Incident";
+    $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
+    array (
+      0 => 
+      array (
+        'type' => 'Dialog.ElicitSlot',
+        'slotToElicit' => 'description',
+      ),
+    ),
+    'shouldEndSession' => false,
+    ),
+    );
+   if ($var=$EchoReqObj->request->intent->slots->description->value){
+   
+	$description = array("description" => $var);                                                                    
+	$description_string = json_encode($description); 
+
+    $array2= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$description_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
+    echo json_encode($array2);                                                                                 
+
+}
+		 
+		 
+	 }
 	
 	     
 
   echo json_encode($array);
 }
+
 
 
 

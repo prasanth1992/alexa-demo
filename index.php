@@ -78,14 +78,7 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
 	$subject = array("subject" => $var);                                                                    
 	$subject_string = json_encode($subject); 
 
-    $array1= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$subject_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
-    echo json_encode($array1);                                                                                 
-
-}
-		echo json_encode($array);
-	 }
-	
-	if($EchoReqObj->request->intent->slots->description->name=="description"){
+  if($EchoReqObj->request->intent->slots->description->name=="description"){
 	$text="please enter description of Incident";
     $array3 = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
@@ -105,12 +98,18 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
 	$description = array("description" => $var);                                                                    
 	$description_string = json_encode($subject); 
 
-    $array4= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$description_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
+    $array4= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$description_string,$subject_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
     echo json_encode($array4);                                                                                 
 
 }
 		echo json_encode($array3);
+	 }                                                                          
+
+}
+		echo json_encode($array);
 	 }
+	
+	
 
 }
 

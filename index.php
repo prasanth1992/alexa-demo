@@ -54,11 +54,10 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 }
   echo json_encode($array);
 }
-// Test of Create object
 
   else if($EchoReqObj->request->intent->name == "CreateObject"){
     
-   else if($EchoReqObj->request->intent->slot->subject->name=="subject"){
+   if($EchoReqObj->request->intent->slot->subject->name=="subject"){
     $text="please enter Subject of Incident";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
@@ -71,26 +70,14 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     'shouldEndSession' => false,
     ),
     );
- if ($var=$EchoReqObj->request->intent->slots->subject->value){
-   
-$data = array("subject" => $var);                                                                    
-$data_string = json_encode($data);                                                                                   
-                                                                                                                  
-                                                                                                                     
-    $result = $data_string;
-                                                                                                                  
-
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$result),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
-    echo json_encode($array);
-  
+ $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$result),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
+ echo json_encode($array);
 }
    }
- 
   echo json_encode($array);
 }
 
 
-//end of test
 
  else if($EchoReqObj->request->intent->name =="AMAZON.StopIntent"){
     $text = "Hmm Ok ";

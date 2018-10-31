@@ -57,7 +57,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 
   else if($EchoReqObj->request->intent->name == "CreateObject"){
 	 
-	 if($EchoReqObj->request->intent->slots->subject->name=="subject"){
+	else if($EchoReqObj->request->intent->slots->subject->name=="subject"){
 	$text="please enter Subject of Incident";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (

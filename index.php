@@ -71,7 +71,7 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
     'shouldEndSession' => false,
     ),
     );
-		  echo json_encode($array);
+		  
 
    if ($var=$EchoReqObj->request->intent->slots->subject->value){
    
@@ -82,6 +82,7 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
     echo json_encode($array1);                                                                                 
 
 }
+		echo json_encode($array);
 	 }
 
 }

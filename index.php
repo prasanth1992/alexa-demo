@@ -57,7 +57,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 
   else if($EchoReqObj->request->intent->name == "CreateObject"){
 	 
-	else if($EchoReqObj->request->intent->slots->subject->name=="subject"){
+	if($EchoReqObj->request->intent->slots->subject->name=="subject"){
 	$text="please enter Subject of Incident";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
@@ -70,7 +70,16 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     'shouldEndSession' => false,
     ),
     );
-	 	 }
+   if ($var=$EchoReqObj->request->intent->slots->subject->value){
+   
+	$subject = array("subject" => $var);                                                                    
+	$subject_string = json_encode($subject); 
+
+    array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$subject_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
+    echo json_encode($array);                                                                                 
+
+}
+	 }
 	
 	     
 

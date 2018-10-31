@@ -70,7 +70,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     'shouldEndSession' => false,
     ),
     );
-   if ($var=$EchoReqObj->request->intent->slots->subject->value){
+   else if ($var=$EchoReqObj->request->intent->slots->subject->value){
    
 	$subject = array("subject" => $var);                                                                    
 	$subject_string = json_encode($subject); 

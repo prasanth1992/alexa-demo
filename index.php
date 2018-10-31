@@ -115,7 +115,7 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
     curl_close($ch);                                                                                                                     
 
 
-    $entire_array= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$result),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
+    $entire_array= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$entire_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
     echo json_encode($entire_array);                                                                                 
 
 }

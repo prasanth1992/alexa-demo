@@ -84,6 +84,33 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
 }
 		echo json_encode($array);
 	 }
+	
+	if($EchoReqObj->request->intent->slots->description->name=="description"){
+	$text="please enter description of Incident";
+    $array3 = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
+    array (
+      0 => 
+      array (
+        'type' => 'Dialog.ElicitSlot',
+        'slotToElicit' => 'description',
+      ),
+    ),
+    'shouldEndSession' => false,
+    ),
+    );
+		  
+
+   if ($var=$EchoReqObj->request->intent->slots->description->value){
+   
+	$description = array("description" => $var);                                                                    
+	$description_string = json_encode($subject); 
+
+    $array4= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$description_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
+    echo json_encode($array4);                                                                                 
+
+}
+		echo json_encode($array3);
+	 }
 
 }
 

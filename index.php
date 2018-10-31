@@ -102,7 +102,7 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
 	$entire_string=json_encode(array_merge(json_decode($subject_string, true),json_decode($description_string, true)));
 	/* Curl For ADD Incident*/
 	
-	$ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/CreateIncident');                                                                      
+	$ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/AddIncident');                                                                      
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $entire_string);                                                                  
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
@@ -115,7 +115,7 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
     curl_close($ch);                                                                                                                     
 
 
-    $entire_array= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$entire_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
+    $entire_array= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$result),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
     echo json_encode($entire_array);                                                                                 
 
 }

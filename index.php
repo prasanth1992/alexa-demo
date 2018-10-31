@@ -98,7 +98,7 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
 	$description = array("description" => $var);                                                                    
 	$description_string = json_encode($description); 
 	   $entire_array= array($subject_string,$description_string);
-	   $entire_string=json_encode(array_merge(json_decode($subject_string, true),json_decode($description_string, true)))
+	   $entire_string=json_encode(array_merge(json_decode($subject_string, true),json_decode($description_string, true)));
 	   
 
     $array4= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$entire_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));

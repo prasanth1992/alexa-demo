@@ -58,7 +58,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 
   else if($EchoReqObj->request->intent->name == "CreateObject"){
     
-   else if($EchoReqObj->request->intent->slot->subject->name=="subject")
+   else if($EchoReqObj->request->intent->slot->subject->name=="subject"){
     $text="please enter Subject of Incident";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
@@ -84,6 +84,8 @@ $data_string = json_encode($data);
     echo json_encode($array);
   
 }
+   }
+ 
   echo json_encode($array);
 }
 

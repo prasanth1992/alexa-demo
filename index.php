@@ -75,7 +75,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 	$subject = array("subject" => $var);                                                                    
 	$subject_string = json_encode($subject); 
 
-    array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$subject_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
+    $array= array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$subject_string),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$result));
     echo json_encode($array);                                                                                 
 
 }

@@ -228,7 +228,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
   $text = "I have Ivant Services, create incident,Add Incident,Incident status,Active incidents,Incident summary, Incident details";
 
   
-  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
   echo json_encode($array);
 }
 

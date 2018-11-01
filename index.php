@@ -225,7 +225,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 /* Services */
 
   else if($EchoReqObj->request->intent->name == "services"){
-  $text = "I had Ivant Services, create incident,Add Incident,Incident status,Active incidents,Incident summary, Incident details";
+  $text = "I had Ivanti Services, create incident,Add Incident,Incident status,Active incidents,Incident summary, Incident details";
 
   
   $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));

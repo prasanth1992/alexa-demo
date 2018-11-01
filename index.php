@@ -1,22 +1,15 @@
 <?php
 $rawJSON = file_get_contents('php://input');
 $EchoReqObj = json_decode($rawJSON);
+/* Launch Request*/
 if($EchoReqObj->request->type=="LaunchRequest"){
   $text = "Welcome to Ivanti Services";
   $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
   echo json_encode($array);
  }
- else if($EchoReqObj->request->intent->name =="New"){
-    $text = "Welcome World This New";
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
-    echo json_encode($array);
- }
-  else if($EchoReqObj->request->intent->name =="latest"){
-    $text = "Welcome World This latest";
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
-    echo json_encode($array);
- }
-  else if($EchoReqObj->request->intent->name =="today"){
+ /* End of launch request*/
+ /* Active incidents*/ 
+  else if($EchoReqObj->request->intent->name =="active"){
   
     $ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/GetCountOfTodaysIncident');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -26,6 +19,8 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     echo json_encode($array);
     curl_close($ch);
  }
+ /* End of Active Incidents*/
+ /* Status of Incidents*/
 
   else if($EchoReqObj->request->intent->name == "status"){
     $text="Enter the incident id";
@@ -54,6 +49,8 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 }
   echo json_encode($array);
 }
+
+/* End of Status of Incidents*/
 
  /*Create Incident*/
 
@@ -130,26 +127,22 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
 
 }
 
-
-
-
 /* End of Create Incident*/
-
-
-
-
-
+/* Stop Intent*/
  else if($EchoReqObj->request->intent->name =="AMAZON.StopIntent"){
     $text = "Hmm Ok ";
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>true));
     echo json_encode($array);
  }
-
+/* End of Stop Intent*/
+/* Repeat Intent*/
 else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
     $text = $EchoReqObj->session->attributes->lastSpeech;
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
     echo json_encode($array);
  }
+ /* End ofRepeat Intent*/
+ /* Today Summary*/
    else if($EchoReqObj->request->intent->name =="todaysummary"){
   
     $ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/GetSummaryOfTodaysIncident');
@@ -170,6 +163,8 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
     }
   
   }
+  /* End of Today Summary*/
+  /* Close incident*/
   else if($EchoReqObj->request->intent->name == "closeincident"){
     $text="Enter the close incident id";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
@@ -197,6 +192,8 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 }
   echo json_encode($array);
 }
+/* End of close incident*/
+/* Incident Description*/
  else if($EchoReqObj->request->intent->name == "incidentDescription"){
     $text="Enter Description incident id";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
@@ -224,6 +221,16 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 }
   echo json_encode($array);
 }
+/* End of incident Description*/
+/* Services */
 
+  else if($EchoReqObj->request->intent->name == "services"){
+  $text = "i have lot of services";
+  
+  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+  echo json_encode($array);
+}
+
+/* End of Services*/
 
 ?>

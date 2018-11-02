@@ -14,9 +14,9 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     $ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/GetCountOfTodaysIncident');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
-    $text=curl_exec($ch);
-	  $newText=JSON_DECODE($text,true)
-	  if($newText['Message']=="An error has occurred."){
+    	  $text=curl_exec($ch);
+	  $newText=json_decode($text,true)
+	  if($newText['Message']="An error has occurred."){
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Services are Done.Please Try after sometime"),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
 	  }

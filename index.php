@@ -16,8 +16,12 @@ if($EchoReqObj->request->type=="LaunchRequest"){
   
     	  $text=curl_exec($ch);
 	 $nextText=json_decode($text,true);
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $nextText),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+	  if($nextText['Message']='An error has occurred.'){
+		  $text="Services are Down, Please check after some time";
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
+	  }
+    
 	 
    
     curl_close($ch);

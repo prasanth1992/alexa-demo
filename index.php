@@ -15,6 +15,11 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
     $text=curl_exec($ch);
+	  $newText=JSON_DECODE($text,true)
+	  if($text['Message']=="An error has occurred."){
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Services are Done.Please Try after sometime"),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+    echo json_encode($array);
+	  }
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
     curl_close($ch);

@@ -14,18 +14,21 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     $ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/GetCountOfTodaysIncident');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
-    $text=curl_exec($ch);
-    $nextText=json_decode($text,true);
-     if($nextText['Message']='An error has occurred.'){
-       $text="Services are not reachable, Please check after some time";
-     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-     echo json_encode($array);
-     }
-     else{
-     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-     echo json_encode($array);
-     }
-     curl_close($ch);
+    	  $text=curl_exec($ch);
+	 $nextText=json_decode($text,true);
+	  if($nextText['Message']='An error has occurred.'){
+		  $text="Services are Down, Please check after some time";
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+    echo json_encode($array);
+	  }
+	  else{
+	  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+    echo json_encode($array);
+	  }
+    
+	 
+   
+    curl_close($ch);
  }
  /* End of Active Incidents*/
  /* Status of Incidents*/
@@ -49,18 +52,13 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
     $text=curl_exec($ch);
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+    echo json_encode($array);
+    curl_close($ch);
    
-     $nextText=json_decode($text,true);
-     if($nextText['Message']='An error has occurred.'){
-       $text="Services are not reachable, Please check after some time";
-     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-     echo json_encode($array);
-     }
-     else{
-     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-     echo json_encode($array);
-     }
- }
+   
+}
+  echo json_encode($array);
 }
 
 /* End of Status of Incidents*/
@@ -119,9 +117,9 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
 		'Content-Type: application/json'                                                                              
 																			  
-	));                                                                                                             
+	));                                                                                                                   
+                                                                                                                     
     $result = curl_exec($ch);
-
     curl_close($ch);                                                                                                                     
 
 
@@ -162,17 +160,12 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
     $text=curl_exec($ch);
-    $nextText=json_decode($text,true);
+  
     if($text==""){
       $text="No summary Today";
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
        curl_close($ch);
-    }
-    else if($nextText['Message']='An error has occurred.'){
-      $text="Services are not reachable, Please check after some time";
-      $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-      echo json_encode($array);
     }
     else{
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
@@ -202,17 +195,8 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
     $text=curl_exec($ch);
-    $nextText=json_decode($text,true);
-    if($nextText['Message']='An error has occurred.'){
-      $text="Services are not reachable, Please check after some time";
-      $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-      echo json_encode($array);
-    }
-    else{
-      $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
-    }
-    
     curl_close($ch);
    
    
@@ -222,7 +206,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 /* End of close incident*/
 /* Incident Description*/
  else if($EchoReqObj->request->intent->name == "incidentDescription"){
-    $text="Enter Description incident id";
+    $text="Enter incident id";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 
@@ -240,16 +224,8 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
     $text=curl_exec($ch);
-    $nextText=json_decode($text,true);
-    if($nextText['Message']='An error has occurred.'){
-      $text="Services are not reachable, Please check after some time";
-      $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-      echo json_encode($array);
-    }
-    else{
-      $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
-    }
     curl_close($ch);
    
    

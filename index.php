@@ -49,16 +49,10 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
     $text=curl_exec($ch);
-    $nextText=json_decode($text,true);
-    if($nextText['Message']='An error has occurred.'){
-    $text="Services are not reachable, Please check after some time";
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-    echo json_encode($array);
-    }
-    else{
+   
       $newArray = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
       echo json_encode($newArray);
-    }
+    
     
     curl_close($ch);
    

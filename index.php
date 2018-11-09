@@ -163,7 +163,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
     curl_close($ch);
 
   
-    if($text==""){
+    if($text=='""'){
       $text="No summary Today";
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);

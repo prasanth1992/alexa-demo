@@ -56,8 +56,8 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     echo json_encode($array);
     }
     else{
-      $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-      echo json_encode($array);
+      $newArray = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+      echo json_encode($newArray);
     }
     
     curl_close($ch);

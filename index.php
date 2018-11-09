@@ -64,7 +64,6 @@ if($EchoReqObj->request->type=="LaunchRequest"){
    
    
 }
-  echo json_encode($array);
 }
 
 /* End of Status of Incidents*/

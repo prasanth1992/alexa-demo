@@ -3,7 +3,7 @@ $rawJSON = file_get_contents('php://input');
 $EchoReqObj = json_decode($rawJSON);
 /* Launch Request*/
 if($EchoReqObj->request->type=="LaunchRequest"){
-  $text = "Welcome to Ivanti Services";
+  $text = "Welcome to Ivanti Services. To know the services I can provide, please ask what I can do";
   $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
   echo json_encode($array);
  }
@@ -18,11 +18,11 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 	 $nextText=json_decode($text,true);
 	  if($nextText['Message']='An error has occurred.'){
 		  $text="Services are Down, Please check after some time";
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today's active incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
 	  }
 	  else{
-	  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+	  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Today's active incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
 	  }
     
@@ -34,7 +34,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
  /* Status of Incidents*/
 
   else if($EchoReqObj->request->intent->name == "status"){
-    $text="Enter the incident id";
+    $text="Please give the ID of the incident whose status you want to know";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 
@@ -52,7 +52,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
     $text=curl_exec($ch);
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Incidents". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Incident's status is ". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
     curl_close($ch);
    
@@ -69,7 +69,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
 else if($EchoReqObj->request->intent->name == "CreateObject"){
 	 
 	if($EchoReqObj->request->intent->slots->subject->name=="subject"){
-	$text="please enter Subject of Incident";
+	$text="Please give the Subject of the Incident you want to add";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 
@@ -89,7 +89,7 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
 	$subject_string = json_encode($subject); 
 
   if($EchoReqObj->request->intent->slots->description->name=="description"){
-	$text="please enter description of Incident";
+	$text="Please provide description of the Incident";
     $description_array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 
@@ -141,7 +141,7 @@ else if($EchoReqObj->request->intent->name == "CreateObject"){
 /* End of Create Incident*/
 /* Stop Intent*/
  else if($EchoReqObj->request->intent->name =="AMAZON.StopIntent"){
-    $text = "Hmm Ok ";
+    $text = "Sure. Thanks for using Ivanti services!";
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>true));
     echo json_encode($array);
  }
@@ -164,7 +164,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 
   
     if($text=='""'){
-      $text="No summary Today";
+      $text="Nothing to report for today.";
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
     }
@@ -178,7 +178,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
   /* End of Today Summary*/
   /* Close incident*/
   else if($EchoReqObj->request->intent->name == "closeincident"){
-    $text="Enter the close incident id";
+    $text="Please provide the ID of the incident you want to close.";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 
@@ -207,7 +207,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 /* End of close incident*/
 /* Incident Description*/
  else if($EchoReqObj->request->intent->name == "incidentDescription"){
-    $text="Enter incident id";
+    $text="Please provide the ID of the incident whose details you need";
     $array = array ('version' => '1.0','response' => array ('outputSpeech' => array ('type' => 'PlainText','text' => $text,),'directives' => 
     array (
       0 => 
@@ -237,7 +237,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 /* Services */
 
   else if($EchoReqObj->request->intent->name == "services"){
-  $text = "I had Ivanti Services, create incident,Add Incident,Incident status,Active incidents,Incident summary, Incident details";
+  $text = "I recognize the following commands. Create or Add incident, Incident Status, Active Incidents, Incident Summary, Incident Details.";
 
   
   $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));

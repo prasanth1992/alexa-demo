@@ -1,6 +1,7 @@
 <?php
 $rawJSON = file_get_contents('php://input');
 $EchoReqObj = json_decode($rawJSON);
+print_r($EchoReqObj);exit;
 /* Launch Request*/
 if($EchoReqObj->request->type=="LaunchRequest"){
   $text = "Welcome to Ivanti Services. To know the services I can provide, please ask what I can do";

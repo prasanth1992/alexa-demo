@@ -196,8 +196,17 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   
     $text=curl_exec($ch);
-    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-    echo json_encode($array);
+	 if (strpos($text, 'object is in final state') !== false) {
+    		$text='Incident is already closed.'
+		$array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+   	        echo json_encode($array);
+	}
+	 else{
+	 	$text='Failed to close the incident, Please Try after Some time.'
+		$array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+   	        echo json_encode($array);
+	 }
+    
     curl_close($ch);
    
    

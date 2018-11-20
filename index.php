@@ -197,10 +197,15 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
   
     $text=curl_exec($ch);
 	 if (strpos($text, 'object is in final state') !== false) {
-    		$text='Incident is already closed.'
+    		$text='Incident is already closed.';
 		$array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
    	        echo json_encode($array);
 	}
+	 else{
+	 	$text='Failed to Close the incident, Please try after some time.';
+		$array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+   	        echo json_encode($array);
+	 }
     
     curl_close($ch);
    

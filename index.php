@@ -247,7 +247,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 /* End of Services*/
 /* Else Statement*/
 
-  else{
+  else if($rawJSON=='' || $rawJSON==null){
   $text = "In else part";
   $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
   echo json_encode($array);

@@ -261,7 +261,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 /* Else Statement*/
 
   else if($EchoReqObj->request->intent->name == "AMAZON.FallbackIntent"){
-  $text = "Sorry I didn't find that services, please try it again.";
+  $text = "Sorry I could not recognize it, Please give a command which i understand.";
   $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
   echo json_encode($array);
 }

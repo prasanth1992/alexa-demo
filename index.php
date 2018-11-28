@@ -269,4 +269,16 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 
 /* End of Else statement*
 
+
+/* Error Handle*/
+
+  else if($EchoReqObj->request->type == "SessionEndedRequest"){
+  $text = "Sorry I didn't find that services, please try it again.";
+  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+  echo json_encode($array);
+}
+
+
+/* End of handle*/
+
 ?>

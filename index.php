@@ -55,9 +55,12 @@ if($EchoReqObj->request->type=="LaunchRequest"){
     $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>"Incident's status is ". $text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
     echo json_encode($array);
     curl_close($ch);
-   
-   
-}
+ }
+ else{
+    $text="In Else Part";
+    $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>true),"sessionAttributes"=>array("lastSpeech"=>$text));
+    echo json_encode($array); 
+ }
   echo json_encode($array);
 }
 

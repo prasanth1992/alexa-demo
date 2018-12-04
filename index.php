@@ -6,8 +6,6 @@ if($EchoReqObj->request->type=="LaunchRequest"){
   $text = "Welcome to Ivanti Services. To know the services I can provide, please ask what I can do";
   $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
   echo json_encode($array);
- 	
-	
  }
  /* End of launch request*/
  /* Active incidents*/ 
@@ -262,7 +260,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 /* End of Services*/
 /* Else Statement*/
 
-  else if($EchoReqObj->request->intent->name == "AMAZON.FallbackIntent"){
+  else if($EchoReqObj->request->intent->name == "AMAZON.FallbackIntent" || $EchoReqObj->request->type == "SessionEndedRequest"){
   $text = "Sorry I could not recognize it, Please give a command which i understand.";
   $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
   echo json_encode($array);
@@ -279,7 +277,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
   echo json_encode($array);
 }
 
-/* End of Session End Request */
+/* End of Session End Request *
 
 else{
 	  $text = "Not Received the Info.";
@@ -287,7 +285,7 @@ else{
 	  echo json_encode($array);
 	
 }
-
+*/
 
 
 ?>

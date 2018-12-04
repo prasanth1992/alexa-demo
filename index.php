@@ -1,6 +1,12 @@
 <?php
 $rawJSON = file_get_contents('php://input');
 $EchoReqObj = json_decode($rawJSON);
+if($EchoReqObj->request->type == "SessionEndedRequest"){
+  $text = "Thanks For Choosing Me.";
+  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>true));
+  echo json_encode($array);
+}
+else{
 /* Launch Request*/
 if($EchoReqObj->request->type=="LaunchRequest"){
   $text = "Welcome to Ivanti Services. To know the services I can provide, please ask what I can do";
@@ -291,7 +297,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 
 
 /* End of NUll value*/
-
+}
 
 
 ?>

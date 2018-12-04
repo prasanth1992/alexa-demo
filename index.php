@@ -291,11 +291,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 
 
 /* End of NUll value*/
-if($EchoReqObj->request->type == "SessionEndedRequest"){
-	  $text = "Thanks For Choosing Me.";
-	  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>true));
-	  echo json_encode($array);
-	}
+
 
 
 ?>

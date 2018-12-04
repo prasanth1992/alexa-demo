@@ -281,6 +281,19 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 
 /* End of Session End Request */
 
+else{
+	if($EchoReqObj->request->type == "SessionEndedRequest"){
+	  $text = "Thanks For Choosing Me.";
+	  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>true));
+	  echo json_encode($array);
+	}
+	else{
+	  $text = "Not Received the Info.";
+	  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>true));
+	  echo json_encode($array);
+	}
+}
+
 
 
 ?>

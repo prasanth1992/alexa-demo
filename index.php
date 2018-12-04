@@ -6,6 +6,12 @@ if($EchoReqObj->request->type=="LaunchRequest"){
   $text = "Welcome to Ivanti Services. To know the services I can provide, please ask what I can do";
   $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
   echo json_encode($array);
+ 	if($EchoReqObj->request->type == "SessionEndedRequest"){
+	  $text = "Thanks For Choosing Me.";
+	  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>true));
+	  echo json_encode($array);
+	}
+	
  }
  /* End of launch request*/
  /* Active incidents*/ 

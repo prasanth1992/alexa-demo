@@ -268,7 +268,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 }
 
 /* End of Services*/
-/* Else Statement*/
+/* Else Statement*
 
   else if($EchoReqObj->request->intent->name == "AMAZON.FallbackIntent"){
   $text = "Sorry I could not recognize it, Please give a command which i understand.";
@@ -289,7 +289,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 
 /* End of Session End Request */
 
-/* NUll value*/
+/* NUll value*
 
   else if($EchoReqObj == "null"){
   $text = "Sorry I didn't find that services, please try it again.";

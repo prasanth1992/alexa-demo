@@ -269,16 +269,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 
 /* End of Else statement*
 
-/* Error Handle*/
 
-  else if($EchoReqObj->request->type == "SessionEndedRequest"){
-  $text = "No Response From You, Thanks for using me.";
-  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>true));
-  echo json_encode($array);
-}
-
-
-/* End of handle*/
 
 
 /* NUll value*/

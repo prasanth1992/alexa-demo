@@ -1,14 +1,6 @@
 <?php
 $rawJSON = file_get_contents('php://input');
 $EchoReqObj = json_decode($rawJSON);
-
-	if($EchoReqObj == "null"){
-	  $text = "Sorry I didn't find that services, please try it again.";
-	  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-	  echo json_encode($array);
-	}
-
-else{
 /* Launch Request*/
 if($EchoReqObj->request->type=="LaunchRequest"){
   $text = "Welcome to Ivanti Services. To know the services I can provide, please ask what I can do";
@@ -268,7 +260,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 }
 
 /* End of Services*/
-/* Else Statement*
+/* Else Statement*/
 
   else if($EchoReqObj->request->intent->name == "AMAZON.FallbackIntent"){
   $text = "Sorry I could not recognize it, Please give a command which i understand.";
@@ -289,17 +281,6 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 
 /* End of Session End Request */
 
-/* NUll value*
-
-  else if($EchoReqObj == "null"){
-  $text = "Sorry I didn't find that services, please try it again.";
-  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
-  echo json_encode($array);
-}
-
-
-/* End of NUll value*/
-}
 
 
 ?>

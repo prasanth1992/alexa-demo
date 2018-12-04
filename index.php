@@ -4,11 +4,11 @@ $EchoReqObj = json_decode($rawJSON);
 /* Launch Request*/
 if($EchoReqObj->request->type=="LaunchRequest"){
   $text = "Welcome to Ivanti Services. To know the services I can provide, please ask what I can do";
-  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"reprompt"=>array("type"=>"PlainText","text"=>"Didn't received Input"),"shouldEndSession"=>false));
+  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false));
   echo json_encode($array);
  }
  /* End of launch request*/
- /* Active incidents*/ 
+ /* Active incidents*/ z
   else if($EchoReqObj->request->intent->name =="active"){
   
     $ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/GetCountOfTodaysIncident');

@@ -272,8 +272,8 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 /* Error Handle*/
 
   else if($EchoReqObj->request->type == "SessionEndedRequest"){
-  $text = "Sorry I could not recognize it, Please give a command which i understand.";
-  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>false),"sessionAttributes"=>array("lastSpeech"=>$text));
+  $text = "No Response From You, Thanks for using me.";
+  $array = array("version"=>"1.0","response"=>array("outputSpeech"=>array("type"=>"PlainText","text"=>$text),"shouldEndSession"=>true));
   echo json_encode($array);
 }
 

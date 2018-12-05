@@ -269,7 +269,7 @@ else if($EchoReqObj->request->intent->name =="AMAZON.RepeatIntent"){
 
 /* End of Else statement*/
 
-/* Session End Request 
+/* Session End Request */
 
  else if($EchoReqObj->request->type == "SessionEndedRequest"){
   $text = "Thanks For Choosing Me.";

@@ -8,7 +8,7 @@ if($EchoReqObj->request->type=="LaunchRequest"){
   echo json_encode($array);
  }
  /* End of launch request*/
- /* Active incidents*/ z
+ /* Active incidents*/ 
   else if($EchoReqObj->request->intent->name =="active"){
   
     $ch = curl_init('http://ec2-34-228-218-131.compute-1.amazonaws.com/AlexaIvanti/Api/Incident/GetCountOfTodaysIncident');
